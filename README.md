@@ -20,10 +20,12 @@
 
 ![image](https://github.com/NikitaM039/IntervalAttestation/assets/123829781/ec613452-5fa9-4d69-a832-b64126d670fa)
 
-5. **
-   '''
-   dsdas
-   '''
+5. 
+```sql
+CREATE DATABASE Human_friends;
+```
+
+
    
 
 
