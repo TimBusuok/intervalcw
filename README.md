@@ -20,11 +20,39 @@
 
 ![image](https://github.com/NikitaM039/IntervalAttestation/assets/123829781/ec613452-5fa9-4d69-a832-b64126d670fa)
 
-5. 
-```sql
-CREATE DATABASE Human_friends;
+5. Выложить историю команд в терминале ubuntu
+```
+Task 1
+mkdir Kennel
+cd ~/Kennel
+cat > home_animals
+cat > pack_animals
+cat home_animals pack_animals > animals
+cat animals
+mv animals mans_friends
+ls -ali
+
+Task 2
+cd ..
+mkdir Kennel_system
+cd ~/Kennel
+mv mans_friends ~/Kennel_system
+cd ~/Kennel_system
+ls -ali
+
+Task 3
+sudo wget https://dev.mysql.com/get/mysql-apt-config_0.8.23-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.23-1_all.deb
+sudo apt-get update
+sudo apt-get install mysql-server
+
+Task 4
+sudo wget https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-ce-cli_20.10.13~3-0~ubuntu-jammy_amd64.deb
+sudo dpkg -i docker-ce-cli_20.10.133-0ubuntu-jammy_amd64.deb
+sudo dpkg -r docker-ce-cli
 ```
 
+6. Нарисовать диаграмму, в которой есть класс родительский класс, домашние животные и вьючные животные, в составы которых в случае домашних животных войдут классы: собаки, кошки, хомяки, а в класс вьючные животные войдут: Лошади, верблюды и ослы).
 
    
 
