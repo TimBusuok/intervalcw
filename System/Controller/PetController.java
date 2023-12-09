@@ -6,11 +6,11 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.text.View;
 import javax.xml.validation.Validator;
 
-import Exceptions.UncorrectDataException;
-import Model.*;
-import Services.IRepository;
-import Services.PetRepository;
-import UserInterface.*;
+import System.Exceptions.UncorrectDataException;
+import System.Model.*;
+import System.Services.IRepository;
+import System.Services.PetRepository;
+import System.UserInterface.*;
 
 public class PetController {
     private IRepository<Pet> petRepository;
