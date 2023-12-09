@@ -2,10 +2,6 @@ package System.Controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
-import javax.swing.text.View;
-import javax.xml.validation.Validator;
-
 import System.Exceptions.UncorrectDataException;
 import System.Model.*;
 import System.Services.IRepository;
@@ -37,10 +33,10 @@ public class PetController {
         } catch (RuntimeException e) {
             view.showMessage(e.getMessage());
         }
-    }
-}
 
- public void updatePet(int id) {
+    }
+
+    public void updatePet(int id) {
 
         Pet pet = getById(id);
         String[] data = new String[] { view.getName(), view.getBirthday() };
