@@ -1,70 +1,36 @@
-## Информация о проекте
+1 mkdir Work
+2 cd ~/Work
+3 cat > home_animals
+4 cat > silly_animals
+5 cat home_animals silly_animals > animals
+6 cat animals
+7 mv animals mans_friends
+8 cd mans_friends
+9 ll
+10cd ~
+11 mkdir work_system
+12 cd ~/Work
+13 mv mans_friends ~/work_system
+14 cd ~/work_system
+15 ll
+16 sudo wget https://dev.mysql.com/get/mysql-apt-config_0.8.23-1_all.deb
+17 sudo dpkg -i mysql-apt-config_0.8.23-1_all.deb
+18 sudo apt-get update
+19 sudo apt-get install mysql-server
+20 sudo wget https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-ce-cli_20.10.13~3-0~ubuntu-jammy_amd64.deb
+21 sudo dpkg -i docker-ce-cli_20.10.133-0ubuntu-jammy_amd64.deb
+22 sudo dpkg -r docker-ce-cli
 
-Необходимо организовать систему учета для питомника, в котором живут домашние и вьючные животные.
 
-## Задание
+![Диаграмма](https://github.com/TimBusuok/-forGB/assets/129662995/5e4557a6-efa7-471a-85d0-7c45eda82307)
 
-1. Используя команду cat в терминале операционной системы Linux, создать два файла Домашние животные (заполнив файл собаками, кошками, хомяками) и Вьючные животными заполнив файл (Лошадьми, верблюдами и ослы), а затем объединить их. Просмотреть содержимое созданного файла. Переименовать файл, дав ему новое имя (Друзья человека).
-   
-и
+Task 7
 
-2. Создать директорию, переместить файл туда.
+create database human_friends
 
-![image](https://github.com/NikitaM039/IntervalAttestation/assets/123829781/bde10441-064c-44a4-96a1-ac5c23eb56ca)
+Task 8
 
-3. Подключить дополнительный репозиторий MySQL. Установить любой пакет из этого репозитория.
-
-![image](https://github.com/NikitaM039/IntervalAttestation/assets/123829781/3056e0b4-84bc-4d84-ac74-4707af071145)
-
-4. Установить и удалить deb-пакет с помощью dpkg.
-
-![image](https://github.com/NikitaM039/IntervalAttestation/assets/123829781/ec613452-5fa9-4d69-a832-b64126d670fa)
-
-5. Выложить историю команд в терминале ubuntu
-```
-Task 1
-mkdir Kennel
-cd ~/Kennel
-cat > home_animals
-cat > pack_animals
-cat home_animals pack_animals > animals
-cat animals
-mv animals mans_friends
-ls -ali
-
-Task 2
-cd ..
-mkdir Kennel_system
-cd ~/Kennel
-mv mans_friends ~/Kennel_system
-cd ~/Kennel_system
-ls -ali
-
-Task 3
-sudo wget https://dev.mysql.com/get/mysql-apt-config_0.8.23-1_all.deb
-sudo dpkg -i mysql-apt-config_0.8.23-1_all.deb
-sudo apt-get update
-sudo apt-get install mysql-server
-
-Task 4
-sudo wget https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-ce-cli_20.10.13~3-0~ubuntu-jammy_amd64.deb
-sudo dpkg -i docker-ce-cli_20.10.133-0ubuntu-jammy_amd64.deb
-sudo dpkg -r docker-ce-cli
-```
-
-6. Нарисовать диаграмму, в которой есть класс родительский класс, домашние животные и вьючные животные, в составы которых в случае домашних животных войдут классы: собаки, кошки, хомяки, а в класс вьючные животные войдут: Лошади, верблюды и ослы).
-
-![221403005-bfe39717-2d41-431d-bc03-f78a1aeb76df](https://github.com/NikitaM039/IntervalAttestation/assets/123829781/219878ea-83e3-481b-bd7f-9a11be977e57)
-
-7. В подключенном MySQL репозитории создать базу данных “Друзья
-человека”
-```sql
-CREATE DATABASE Human_friends;
-```
-
-8. Создать таблицы с иерархией из диаграммы в БД
-```sql
-USE Human_friends;
+USE human_friends;
 CREATE TABLE animal_classes
 (
 	Id INT AUTO_INCREMENT PRIMARY KEY, 
@@ -111,14 +77,13 @@ CREATE TABLE cats
     Genus_id int,
     Foreign KEY (Genus_id) REFERENCES home_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-```
-9. Заполнить низкоуровневые таблицы именами(животных), командами
-которые они выполняют и датами рождения
-```sql
+
+Task 9
+
 INSERT INTO cats (Name, Birthday, Commands, Genus_id)
-VALUES ('Пупа', '2011-01-01', 'кс-кс-кс', 1),
-('Олег', '2016-01-01', "отставить!", 1),  
-('Тьма', '2017-01-01', "", 1); 
+VALUES ('Люська', '2011-01-01', 'кс-кс-кс', 1),
+('Муха', '2016-01-01', "отставить!", 1),  
+('Лучик', '2017-01-01', "", 1); 
 
 CREATE TABLE dogs 
 (       
@@ -131,8 +96,8 @@ CREATE TABLE dogs
 );
 INSERT INTO dogs (Name, Birthday, Commands, Genus_id)
 VALUES ('Дик', '2020-01-01', 'ко мне, лежать, лапу, голос', 2),
-('Граф', '2021-06-12', "сидеть, лежать, лапу", 2),  
-('Шарик', '2018-05-01', "сидеть, лежать, лапу, след, фас", 2), 
+('Гуф', '2021-06-12', "сидеть, лежать, лапу", 2),  
+('Лайка', '2018-05-01', "сидеть, лежать, лапу, след, фас", 2), 
 ('Босс', '2021-05-10', "сидеть, лежать, фу, место", 2);
 
 CREATE TABLE hamsters 
@@ -145,10 +110,10 @@ CREATE TABLE hamsters
     Foreign KEY (Genus_id) REFERENCES home_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 INSERT INTO hamsters (Name, Birthday, Commands, Genus_id)
-VALUES ('Малой', '2020-10-12', '', 3),
-('Медведь', '2021-03-12', "атака сверху", 3),  
-('Ниндзя', '2022-07-11', NULL, 3), 
-('Бурый', '2022-05-10', NULL, 3);
+VALUES ('Рокс', '2020-10-12', '', 3),
+('Бокс', '2021-03-12', "атака сверху", 3),  
+('Ростик', '2022-07-11', NULL, 3), 
+('Борька', '2022-05-10', NULL, 3);
 
 CREATE TABLE horses 
 (       
@@ -190,26 +155,23 @@ CREATE TABLE camels
     Foreign KEY (Genus_id) REFERENCES packed_animals (Id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 INSERT INTO camels (Name, Birthday, Commands, Genus_id)
-VALUES ('Горбатый', '2022-04-10', 'вернись', 3),
-('Самец', '2019-03-12', "остановись", 3),  
-('Сифон', '2015-07-12', "повернись", 3), 
+VALUES ('Люмка', '2022-04-10', 'вернись', 3),
+('Симон', '2019-03-12', "остановись", 3),  
+('Красавчик', '2015-07-12', "повернись", 3), 
 ('Борода', '2022-12-10', "улыбнись", 3);
-```
 
-10. Удалив из таблицы верблюдов, т.к. верблюдов решили перевезти в другой
-питомник на зимовку. Объединить таблицы лошади, и ослы в одну таблицу.
-```sql
+Task 10
+
 SET SQL_SAFE_UPDATES = 0;
 DELETE FROM camels;
 
 SELECT Name, Birthday, Commands FROM horses
 UNION SELECT  Name, Birthday, Commands FROM donkeys;
-```
 
-11. Создать новую таблицу “молодые животные” в которую попадут все
-животные старше 1 года, но младше 3 лет и в отдельном столбце с точностью
-до месяца подсчитать возраст животных в новой таблице
-```sql
+
+Task 11
+
+
 CREATE TEMPORARY TABLE animals AS 
 SELECT *, 'Лошади' as genus FROM horses
 UNION SELECT *, 'Ослы' AS genus FROM donkeys
@@ -222,10 +184,10 @@ SELECT Name, Birthday, Commands, genus, TIMESTAMPDIFF(MONTH, Birthday, CURDATE()
 FROM animals WHERE Birthday BETWEEN ADDDATE(curdate(), INTERVAL -3 YEAR) AND ADDDATE(CURDATE(), INTERVAL -1 YEAR);
  
 SELECT * FROM yang_animal;
-```
-12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на
-прошлую принадлежность к старым таблицам.
-```sql
+
+Task 12
+
+
 SELECT h.Name, h.Birthday, h.Commands, pa.Genus_name, ya.Age_in_month 
 FROM horses h
 LEFT JOIN yang_animal ya ON ya.Name = h.Name
@@ -250,24 +212,3 @@ SELECT hm.Name, hm.Birthday, hm.Commands, ha.Genus_name, ya.Age_in_month
 FROM hamsters hm
 LEFT JOIN yang_animal ya ON ya.Name = hm.Name
 LEFT JOIN home_animals ha ON ha.Id = hm.Genus_id;
-```
-
-13. Создать [класс с Инкапсуляцией методов и наследованием по диаграмме]. https://github.com/NikitaM039/IntervalAttestation/tree/main/System
-14. Написать [программу, имитирующую работу реестра домашних животных]. https://github.com/NikitaM039/IntervalAttestation/tree/main/System
-В программе должен быть реализован следующий функционал:    
-	14.1 Завести новое животное    
-	14.2 определять животное в правильный класс    
-	14.3 увидеть список команд, которое выполняет животное    
-	14.4 обучить животное новым командам    
-	14.5 Реализовать навигацию по меню    
-15. Создайте [класс Счетчик] https://github.com/NikitaM039/IntervalAttestation/tree/main/System, у которого есть метод add(), увеличивающий̆
-значение внутренней̆ int переменной̆ на 1 при нажатии “Завести новое
-животное” Сделайте так, чтобы с объектом такого типа можно было работать в
-блоке try-with-resources. Нужно бросить исключение, если работа с объектом
-типа счетчик была не в ресурсном try и/или ресурс остался открыт. Значение
-считать в ресурсе try, если при заведении животного заполнены все поля.
-
-
-
-
-
